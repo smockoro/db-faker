@@ -1,2 +1,2 @@
 # db-faker
-![Go](https://github.com/smockoro/db-faker/workflows/Go/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/smockoro/db-faker/badge.svg?branch=main)](https://coveralls.io/github/smockoro/db-faker?branch=main)
+![Go](https://github.com/smockoro/db-faker/workflows/Go/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/smockoro/db-faker/badge.svg?branch=main)](https://coveralls.io/github/smockoro/db-faker?branch=main)[![Maintainability](https://api.codeclimate.com/v1/badges/fec8829c6c503108a33a/maintainability)](https://codeclimate.com/github/smockoro/db-faker/maintainability)[![Go Report Card](https://goreportcard.com/badge/github.com/smockoro/db-faker)](https://goreportcard.com/report/github.com/smockoro/db-faker)
