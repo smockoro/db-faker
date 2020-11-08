@@ -46,6 +46,7 @@ jobs:
         cd devtool 
         docker-compose up -d
         sleep 30
+        docker-compose status
 
     - name: Install dependencies
       run: |
