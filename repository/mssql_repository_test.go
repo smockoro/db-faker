@@ -27,7 +27,7 @@ func TestNewMSSQLFakerRepository(t *testing.T) {
 				}{
 					Schema:   "sqlserver",
 					User:     "sa",
-					Password: "password",
+					Password: "P@ssw0rd",
 					Host:     "localhost",
 					Port:     1433,
 					Name:     "",
@@ -63,7 +63,7 @@ func TestMSSQLPing(t *testing.T) {
 		}{
 			Schema:   "sqlserver",
 			User:     "sa",
-			Password: "password",
+			Password: "P@ssw0rd",
 			Host:     "localhost",
 			Port:     1433,
 			Name:     "",

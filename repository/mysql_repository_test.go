@@ -27,7 +27,7 @@ func TestNewMySQLFakerRepository(t *testing.T) {
 				}{
 					Schema:   "mysql",
 					User:     "root",
-					Password: "password",
+					Password: "P@ssw0rd",
 					Host:     "localhost",
 					Port:     3306,
 					Name:     "",
@@ -63,7 +63,7 @@ func TestMySQLPing(t *testing.T) {
 		}{
 			Schema:   "mysql",
 			User:     "root",
-			Password: "password",
+			Password: "P@ssw0rd",
 			Host:     "localhost",
 			Port:     3306,
 			Name:     "",
