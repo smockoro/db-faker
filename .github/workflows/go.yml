@@ -40,6 +40,12 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
+    - name: compose-run
+      shell: bash
+      run: |
+        cd devtool 
+        docker-compose up -d
+
     - name: Install dependencies
       run: |
         go mod download
