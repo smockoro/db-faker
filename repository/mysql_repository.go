@@ -16,7 +16,7 @@ type MySQLFakerRepository struct {
 
 // NewMySQLFakerRepository :
 func NewMySQLFakerRepository(cfg *config.Config) FakerRepository {
-	dsn := fmt.Sprintf("%s:%s@%s:%d/%s",
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
 		cfg.Db.User, cfg.Db.Password, cfg.Db.Host, cfg.Db.Port, cfg.Db.Name)
 	db, _ := sqlx.Open(cfg.Db.Schema, dsn)
 	return &MySQLFakerRepository{DB: db}
