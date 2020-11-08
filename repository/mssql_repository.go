@@ -21,10 +21,10 @@ func NewMSSQLFakerRepository(cfg *config.Config) FakerRepository {
 	query.Add("database", cfg.Db.Name)
 
 	u := &url.URL{
-		Scheme:   cfg.Db.Schema,
-		User:     url.UserPassword(cfg.Db.User, cfg.Db.Password),
-		Host:     fmt.Sprintf("%s:%d", cfg.Db.Host, cfg.Db.Port),
-		RawQuery: query.Encode(),
+		Scheme: cfg.Db.Schema,
+		User:   url.UserPassword(cfg.Db.User, cfg.Db.Password),
+		Host:   fmt.Sprintf("%s:%d", cfg.Db.Host, cfg.Db.Port),
+		//RawQuery: query.Encode(),
 	}
 	db, _ := sqlx.Open(cfg.Db.Schema, u.String())
 	return &MSSQLFakerRepository{DB: db}
