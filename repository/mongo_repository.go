@@ -4,6 +4,7 @@ package repository
 import (
 	"context"
 	"fmt"
+	"net/url"
 	"time"
 
 	"github.com/smockoro/db-faker/config"
@@ -19,9 +20,14 @@ type MongoFakerRepository struct {
 
 // NewMongoFakerRepository :
 func NewMongoFakerRepository(cfg *config.Config) FakerRepository {
-	uri := fmt.Sprintf("mongodb://%s:%s@%s:%d/%s",
-		cfg.Db.User, cfg.Db.Password, cfg.Db.Host, cfg.Db.Port, cfg.Db.Name)
-	client, _ := mongo.NewClient(options.Client().ApplyURI(uri))
+	u := &url.URL{
+		Scheme: cfg.Db.Schema,
+		User:   url.UserPassword(cfg.Db.User, cfg.Db.Password),
+		Host:   fmt.Sprintf("%s:%d", cfg.Db.Host, cfg.Db.Port),
+		Path:   cfg.Db.Name,
+		//RawQuery: query.Encode(),
+	}
+	client, _ := mongo.NewClient(options.Client().ApplyURI(u.String()))
 	return &MongoFakerRepository{Client: client}
 }
 

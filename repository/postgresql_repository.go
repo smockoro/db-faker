@@ -3,6 +3,7 @@ package repository
 
 import (
 	"fmt"
+	"net/url"
 
 	_ "github.com/jackc/pgx/stdlib" // for postgresql driver loaded
 	"github.com/jmoiron/sqlx"
@@ -16,9 +17,14 @@ type PostgreSQLFakerRepository struct {
 
 // NewPostgreSQLFakerRepository :
 func NewPostgreSQLFakerRepository(cfg *config.Config) FakerRepository {
-	url := fmt.Sprintf("postgres://%s:%s@%s:%d/%s",
-		cfg.Db.User, cfg.Db.Password, cfg.Db.Host, cfg.Db.Port, cfg.Db.Name)
-	db, _ := sqlx.Open("pgx", url)
+	u := &url.URL{
+		Scheme: cfg.Db.Schema,
+		User:   url.UserPassword(cfg.Db.User, cfg.Db.Password),
+		Host:   fmt.Sprintf("%s:%d", cfg.Db.Host, cfg.Db.Port),
+		Path:   cfg.Db.Name,
+		//RawQuery: query.Encode(),
+	}
+	db, _ := sqlx.Open("pgx", u.String())
 	return &PostgreSQLFakerRepository{DB: db}
 }
 
