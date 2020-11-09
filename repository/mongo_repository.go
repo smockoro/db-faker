@@ -29,5 +29,6 @@ func NewMongoFakerRepository(cfg *config.Config) FakerRepository {
 func (mfr *MongoFakerRepository) Ping() error {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
+	fmt.Println("client: ", mfr.Client)
 	return mfr.Client.Ping(ctx, readpref.Primary())
 }

@@ -30,7 +30,7 @@ func TestNewMongoFakerRepository(t *testing.T) {
 					Password: "P@ssw0rd",
 					Host:     "localhost",
 					Port:     27017,
-					Name:     "",
+					Name:     "admin",
 				},
 			},
 			errorIsNil: true,
@@ -66,7 +66,7 @@ func TestMongoPing(t *testing.T) {
 			Password: "P@ssw0rd",
 			Host:     "localhost",
 			Port:     27017,
-			Name:     "",
+			Name:     "admin",
 		},
 	}
 	repo := repository.NewMongoFakerRepository(cfg)
