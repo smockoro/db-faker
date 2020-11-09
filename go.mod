@@ -5,6 +5,7 @@ go 1.12
 require (
 	github.com/denisenkom/go-mssqldb v0.9.0
 	github.com/go-sql-driver/mysql v1.5.0
+	github.com/jackc/pgx v3.6.2+incompatible
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/lib/pq v1.0.0
 	github.com/mattn/go-gimei v0.0.0-20201015052002-925c9bbaff12
