@@ -27,7 +27,7 @@ func TestNewMongoFakerRepository(t *testing.T) {
 				}{
 					Schema:   "mongodb",
 					User:     "admin",
-					Password: "Passw0rd",
+					Password: "P@ssw0rd",
 					Host:     "localhost",
 					Port:     27017,
 					Name:     "admin",
@@ -63,7 +63,7 @@ func TestMongoPing(t *testing.T) {
 		}{
 			Schema:   "mongodb",
 			User:     "admin",
-			Password: "Passw0rd",
+			Password: "P@ssw0rd",
 			Host:     "localhost",
 			Port:     27017,
 			Name:     "admin",
