@@ -19,7 +19,7 @@ type MongoFakerRepository struct {
 
 // NewMongoFakerRepository :
 func NewMongoFakerRepository(cfg *config.Config) FakerRepository {
-	uri := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
+	uri := fmt.Sprintf("mongodb://%s:%s@%s:%d/%s",
 		cfg.Db.User, cfg.Db.Password, cfg.Db.Host, cfg.Db.Port, cfg.Db.Name)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
