@@ -22,8 +22,16 @@ services:
       - 1433:1433
 
   postgresql:
-      image: postgres:13.0
+    image: postgres:13.0
     environment:
       POSTGRES_PASSWORD: "P@ssw0rd"
     ports:
-        - 5432:5432
+      - 5432:5432
+
+  mongodb:
+    image: mongo:4.0.20
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "P@ssw0rd"
+    ports:
+      - 27017:27017
