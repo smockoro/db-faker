@@ -21,3 +21,9 @@ services:
     ports:
       - 1433:1433
 
+  postgresql:
+      image: postgres:13.0
+    environment:
+      POSTGRES_PASSWORD: "P@ssw0rd"
+    ports:
+        - 5432:5432
