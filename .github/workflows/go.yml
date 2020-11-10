@@ -28,6 +28,18 @@ jobs:
       run: |
         cd cmd && go build -v .
 
+  golangci:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v2
+      with:
+        version: v1.29
+
   test:
     name: Test with Coverage
     runs-on: ubuntu-latest
