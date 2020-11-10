@@ -33,5 +33,6 @@ func NewElasticsearchFakerRepository(cfg *config.Config) FakerRepository {
 
 // Ping : ping to database
 func (mfr *ElasticsearchFakerRepository) Ping() error {
-	return mfr.Client.Ping()
+	_, err := mfr.Client.Ping()
+	return err
 }
