@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNewMongoFakerRepository(t *testing.T) {
+func TestNewElasticsearchFakerRepository(t *testing.T) {
 	cases := []struct {
 		name       string
 		cfg        *config.Config
@@ -25,12 +25,12 @@ func TestNewMongoFakerRepository(t *testing.T) {
 					Port     int    `yaml:"port"`
 					Name     string `yaml:"name"`
 				}{
-					Schema:   "mongodb",
-					User:     "admin",
-					Password: "P@ssw0rd",
+					Schema:   "elasticsearch",
+					User:     "",
+					Password: "",
 					Host:     "localhost",
-					Port:     27017,
-					Name:     "admin",
+					Port:     9200,
+					Name:     "",
 				},
 			},
 			errorIsNil: true,
@@ -41,7 +41,7 @@ func TestNewMongoFakerRepository(t *testing.T) {
 		c := c // cascading
 		t.Run(c.name, func(t *testing.T) {
 			t.Parallel()
-			repo := repository.NewMongoFakerRepository(c.cfg)
+			repo := repository.NewElasticsearchFakerRepository(c.cfg)
 			if c.errorIsNil {
 				assert.NotNil(t, repo)
 			} else {
@@ -51,7 +51,7 @@ func TestNewMongoFakerRepository(t *testing.T) {
 	}
 }
 
-func TestMongoPing(t *testing.T) {
+func TestElasticsearchPing(t *testing.T) {
 
 	cases := []struct {
 		name       string
@@ -69,36 +69,15 @@ func TestMongoPing(t *testing.T) {
 					Port     int    `yaml:"port"`
 					Name     string `yaml:"name"`
 				}{
-					Schema:   "mongodb",
-					User:     "admin",
-					Password: "P@ssw0rd",
-					Host:     "localhost",
-					Port:     27017,
-					Name:     "admin",
-				},
-			},
-			errorIsNil: true,
-		},
-		{
-			name: "disconnect",
-			cfg: &config.Config{
-				Db: struct {
-					Schema   string `yaml:"schema"`
-					User     string `yaml:"user"`
-					Password string `yaml:"password"`
-					Host     string `yaml:"host"`
-					Port     int    `yaml:"port"`
-					Name     string `yaml:"name"`
-				}{
-					Schema:   "mongodb",
+					Schema:   "elasticsearch",
 					User:     "",
 					Password: "",
 					Host:     "localhost",
-					Port:     7017,
+					Port:     9200,
 					Name:     "",
 				},
 			},
-			errorIsNil: false,
+			errorIsNil: true,
 		},
 	}
 
@@ -106,7 +85,7 @@ func TestMongoPing(t *testing.T) {
 		c := c // cascading
 		t.Run(c.name, func(t *testing.T) {
 			t.Parallel()
-			repo := repository.NewMongoFakerRepository(c.cfg)
+			repo := repository.NewElasticsearchFakerRepository(c.cfg)
 			err := repo.Ping()
 			if c.errorIsNil {
 				assert.Nil(t, err)
